@@ -1,7 +1,3 @@
-var c=document.getElementById("worldCanvas");
-var ctx=c.getContext("2d");
-var log=document.getElementById("log");
-
 function create2DArray(rows){
 	var arr = [];
 	for(var i = 0;i < rows;i++){
