@@ -1,5 +1,4 @@
 jpneill.github.io
 =================
 
-
-Readme!
+<http://jpneill.github.io>
