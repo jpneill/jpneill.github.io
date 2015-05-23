@@ -64,12 +64,25 @@ q)v
 
         <h3>Addition and Subtraction</h3>
         <p>If I have two vectors v and w the sum or difference of the two is a new vector whose elements are the sum or difference of the elements of v and w.$$\mathbf{v}=\begin{pmatrix}1 \\ 2\end{pmatrix};\mathbf{w}=\begin{pmatrix}3 \\ 4\end{pmatrix}\to \mathbf{v}+\mathbf{w}=\begin{pmatrix}4 \\ 6\end{pmatrix}$$</p>
+
 <pre><code>q)v:1 2f
 q)w:3 4f
 q)v+w
 3 6f
 q)v-w
 -2 -2f</code></pre>
+
+        <p>Matrices operate similarly:$$\mathbf{A}=\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} ; \mathbf{B}=\begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix}$$\to \mathbf{A}+\mathbf{B}=\begin{pmatrix}6 & 8 \\ 10 & 12 \end{pmatrix}</p>
+        
+<pre><code>q)B:(5 6f;7 8f)
+q)A+B
+6  8 
+10 12
+q)A-B
+-4 -4
+-4 -4</code></pre>
+
+        <p></p>
       </section>
     </div>
       
