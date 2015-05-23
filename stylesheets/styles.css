@@ -118,7 +118,7 @@ audio:not([controls]) {
 /* =============================================================================
     Left Navigation Pane for posts
    =============================================================================*/
-.left {
+.leftnav {
   position:fixed; /* keep fixed to window */
   padding: 10px;
   top: 0; left: 0; /* position to top left of window */
