@@ -124,6 +124,8 @@ audio:not([controls]) {
   top: 0; left: 0; /* position to top left of window */
   height:100%; width:100px; /* set dimensions */
   transition: width ease .5s; /* fluid transition when resizing */
+  border-right-style:double;
+  border-right-width:thick;
   
   ul {
     list-style:none;
@@ -131,20 +133,6 @@ audio:not([controls]) {
     
     li {
       margin-bottom:25px;
-    }
-  }
-  
-  a {
-    color:greenyellow;
-    text-decoration:none;
-    border-bottom:1px solid transparent;
-    transition:
-      color ease .35s,
-      border-bottom-color ease .35s;
-    
-    &:hover {
-       color:white;
-       border-bottom-color:white; 
     }
   }
 }
