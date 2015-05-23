@@ -83,7 +83,22 @@ q)A-B
 -4 -4</code></pre>
 
         <h3>Dot product of 2 vectors</h3>
-        <p>The dot product of 2 vectors is the sum of the product of the individual elements of each vector:$$\mathbf{v}\cdot\mathbf{w}=v_1 w_1+v_2 w_2 = 3+8 = 11$$</p>
+        <p>The dot product of 2 vectors is the sum of the product of the individual elements of each vector:$$\mathbf{v}\cdot\mathbf{w}=v_1 w_1+v_2 w_2 = 3+8 = 11$$In q we can do this with the mmu or $ operators:</p>
+
+<pre><code>q)v mmu w
+11f
+q)v$w
+11f</code></pre>
+
+        <h3>Multiplication of 2 matrices</h3>
+        <p>Matrix multiplcation can only occur if the number of columns in the left matrix equals the number of rows in the right matrix. The product of two matrices is the matrix whose elements are the dot product of the row in the left matrix and the corresponding column in the right matrix:$$\mathbf{A}\mathbf{B}=\begin{pmatrix}(1)(5)+(2)(7)&amp;(1)(6)+(2)(8) \\(3)(5)+(4)(7)&amp;(3)(6)+(4)(8)\end{pmatrix}=\begin{pmatrix}19&amp;22\\43&amp;50\end{pmatrix}$$</p>
+
+<pre><code>q)A mmu B
+19 22
+43 50
+q)A$B
+19 22
+43 50</code></pre>
       </section>
     </div>
       
