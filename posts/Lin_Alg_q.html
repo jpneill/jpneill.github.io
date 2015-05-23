@@ -46,7 +46,8 @@
     <div class="wrapper">
       <section>
         <div id="title">
-          <h1>An Introduction to Linear Algebra in q</h1>
+          <h1>Basic Linear Algebra in q</h1>
+          <hr>
         </div>
         <p>As an array processing language q allows us to perform vectorised operations on lists. The presence of vectors and matrices in q means that basic linear algebra techniques are available to us. A matrix in q is represented as a list of lists:</p>
         
@@ -62,7 +63,13 @@ q)v
 1 2 3f</code></pre>
 
         <h3>Addition and Subtraction</h3>
-        <p>If I have two vectors v and w the sum or difference of the two is a new vector whose elements are the sum or difference of the elements of v and w.$$\mathbf{v}=\begin{pmatrix}1 \\ 2\end{pmatrix}$$</p>
+        <p>If I have two vectors v and w the sum or difference of the two is a new vector whose elements are the sum or difference of the elements of v and w.$$\mathbf{v}=\begin{pmatrix}1 \\ 2\end{pmatrix};\mathbf{w}=\begin{pmatrix}3 \\ 4\end{pmatrix}\to \mathbf{v}+\mathbf{w}=\begin{pmatrix}4 \\ 6\end{pmatrix}$$</p>
+<pre><code>q)v:1 2f
+q)w:3 4f
+q)v+w
+3 6f
+q)v-w
+-2 -2f</code></pre>
       </section>
     </div>
       
