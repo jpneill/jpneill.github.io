@@ -126,6 +126,7 @@ audio:not([controls]) {
   transition: width ease .5s; /* fluid transition when resizing */
   border-right-style:double;
   border-right-width:thick;
+  border-right-color:dimgrey;
   
   ul {
     list-style:none;
