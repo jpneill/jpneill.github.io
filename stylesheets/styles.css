@@ -127,6 +127,7 @@ audio:not([controls]) {
   border-right-style:double;
   border-right-width:thick;
   border-right-color:dimgrey;
+  margin-top:65px;
   
   ul {
     list-style:none;
