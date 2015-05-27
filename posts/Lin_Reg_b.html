@@ -53,7 +53,7 @@
           <span class="credits right">23/05/2015</span>
         </div>
         <h3>Example</h3>
-        <p>Now we have the boring stuff out the way we can do some kdb+. 
+        <p>Now we have the boring stuff out the way we can do some q. 
         For this example we'll work through the same linear regression example in R given on this website: <a href="http://www.cyclismo.org/tutorial/R/linearLeastSquares.html">Linear Least Squares Regression</a> and examine some of the statistics.
         We'll also be using a C extension to calculate the inverse because the native version of q's inverse function sacrifices accuracy for performance. For this example we are much more interested in numerical stability than speed. 
         This function will use lapack's dgetrf and dgetri functions, the source can be found here: 
@@ -87,7 +87,7 @@ q)pCoeff[year;rate]
         <h3>Calculating β</h3>
         <p>Finally we get to use all the theory we discussed in part a. We defined β as:
         $$\mathbf{\beta}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}$$
-        This is quite easy to write in kdb+ due to lists being the building blocks of all things q:</p>
+        This is quite easy to write in q due to lists being the building blocks of all things q:</p>
         
 <pre><code>q)neq:{(qinv[flip[x]$x]$flip[x])$y}</code></pre>
  
@@ -120,9 +120,10 @@ q)sse[X;rate;beta]
         where d.o.f. is the degrees of freedom defined as the difference between the number of samples in our data 
         set and the number of parameters we are estimating.</p>
         
-<pre><code>q)rse:{[x;y;beta]sqrt sse[x;y;beta]%count[y]-count beta}
+<pre><code>q)rse:{[x;y;beta]`dof`rse!(dof;sqrt sse[x;y;beta]%dof:count[y]-count beta)}
 q)rse[X;rate;beta]
-0.2005243</code></pre>
+dof| 3
+rse| 0.2005243</code></pre>
 
         <h3>Standard Error of the Coefficients</h3>
         <p>The standard error of the coefficients <b>β</b> are the diagonal entries of the matrix:
