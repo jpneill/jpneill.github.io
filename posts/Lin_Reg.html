@@ -52,6 +52,8 @@
           <span class="credits left">James Neill</span>
           <span class="credits right">23/05/2015</span>
         </div>
+        <p>This is part a of a two part post. In this part we will look at the underlying theory behind simple linear regression and determining parameters for a line of best fit.
+        In <a hreaf="http://jpneill.github.io/posts/Lin_Reg_b.html">part b</a> we will look at a worked example in kdb+ plus some statistics.</p>
         <h3>Theory</h3>
         <p>Linear regression is a supervised learning technique for predicting future numerical values based on historical data. 
         The goal is to determine a optimal function which describes the trend in the data (when we have only one input and one output we call this finding the line of best fit). 
@@ -75,7 +77,9 @@
         all the target outputs and X is called the design matrix - a matrix whose rows are made of each input 
         vector <b>x</b> <sub>i</sub> :$$\mathbf{y}=\begin{pmatrix}y_1\\y_2\\\vdots\\y_n\end{pmatrix};\mathbf{X}=\begin{pmatrix}\mathbf{x}_1^T\\\mathbf{x}_2^T\\\vdots\\\mathbf{x}_n^T\end{pmatrix}$$
         Now all that is required is to minimize this function in terms of the parameter vector β. 
-        To find the minimum we differentiate with respect to β, set the result equal to 0 and solve for β:$$\mathbf{\beta}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^{-1}\mathbf{y}$$</p>
+        To find the minimum we differentiate with respect to β, set the result equal to 0 and solve for β:
+        $$\mathbf{\beta}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^{-1}\mathbf{y}$$
+        This equations is sometimes referred to as the <a href="http://mathworld.wolfram.com/NormalEquation.html">Normal Equation</a></p>
         
       </section>
     </div>
