@@ -54,8 +54,8 @@
         </div>
         <h3>Example</h3>
         <p>Now we have the boring stuff out the way we can do some kdb+. 
-        For this example we'll work through the same linear regression example in R given on this website: <a href="http://www.cyclismo.org/tutorial/R/linearLeastSquares.html">Linear Least Squares Regression</a>.
-        We'll also be using a C extension to calculate the inverse. 
+        For this example we'll work through the same linear regression example in R given on this website: <a href="http://www.cyclismo.org/tutorial/R/linearLeastSquares.html">Linear Least Squares Regression</a> and examine some of the statistics.
+        We'll also be using a C extension to calculate the inverse because the native version of q's inverse function sacrifices accuracy for performance. For this example we are much more interested in numerical stability than speed. 
         This function will use lapack's dgetrf and dgetri functions, the source can be found here: 
         <a href="https://github.com/jpneill/qinv">qinv</a></p>
         <p></p>
@@ -69,7 +69,46 @@ q)rate:9.34 8.5 7.62 6.93 6.60</code></pre>
         Pearson's coefficient is a measure of correlation between 2 variables that has a value between -1 and 1. 
         When it has a value of 1 a linear equation describes the trend of the data where an increase in X is mirrored by an increase in Y.
         When it has a value of -1 then the linear equation describes a decreasing trend instead. 
-        A value at 0 or close to 0 indicates there is little to no linear correlation between the variables. It is calculated </p>
+        A value at 0 or close to 0 indicates there is little to no linear correlation between the variables. 
+        It is calculated as: $$\rho_{XY}=\frac{cov(X,Y)}{\sigma_X\sigma_Y}$$<i>cov(X,Y)</i> is the covariance between 
+        two population samples with size N: $$X={x_1,x_2,\dots,x_n};Y={y_1,y_2,\dots,y_n}$$
+        $$cov(X,Y)=\sum_{i=1}^N\frac{(x_i-\bar{x})(y_i-\bar{y})}{N}$$ In kdb we can define this as:</p>
+
+<pre><code>q)covar:{sum((x-avg x)*y-avg y)%count x}</code></pre>
+
+        <p>Using this we can write a function for the Pearson Coefficient:</p>
+        
+<pre><code>q)pCoeff:{covar[x;y]%(sqrt var x)*sqrt var y}
+q)pCoeff[year;rate]
+-0.9880813</code></pre>
+
+        <p>This value for the coefficient tells us that a linear equation descibes the data very well and is a good candidate for applying a simple linear regression model.</p>
+        
+        <h3>Calculating β</h3>
+        <p>Finally we get to use all the theory we discussed in part a. We defined β as:
+        $$\mathbf{\beta}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^{-1}\mathbf{y}$$
+        This is quite easy to write in kdb+ due to lists being the building blocks of all things q:</p>
+        
+<pre><code>q)neq:{(qinv[flip[x]$x]$flip[x])$y}</code></pre>
+ 
+        <p>Before we can apply this to our data set we need to build our design matrix. 
+        This can be easily accomplished by appending a 1 to each of the values in the year variable:</p>
+
+<pre><code>q)X:1.0,/:year
+q)X
+1 2000
+1 2001
+1 2002
+1 2003
+1 2004</code></pre>
+
+        <p>Now we can find our coefficients:</p>
+        
+<pre><code>q)beta:neq[X;rate]
+q)beta
+1419.208 -0.705</code></pre>
+
+        <h3>Residuals and the Residual Standard Error</h3>
       </section>
     </div>
     </div>
