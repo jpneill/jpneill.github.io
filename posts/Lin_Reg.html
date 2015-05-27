@@ -78,7 +78,7 @@
         vector <b>x</b> <sub>i</sub> :$$\mathbf{y}=\begin{pmatrix}y_1\\y_2\\\vdots\\y_n\end{pmatrix};\mathbf{X}=\begin{pmatrix}\mathbf{x}_1^T\\\mathbf{x}_2^T\\\vdots\\\mathbf{x}_n^T\end{pmatrix}$$
         Now all that is required is to minimize this function in terms of the parameter vector β. 
         To find the minimum we differentiate with respect to β, set the result equal to 0 and solve for β:
-        $$\mathbf{\beta}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^{-1}\mathbf{y}$$
+        $$\mathbf{\beta}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}$$
         This equation is sometimes referred to as the <a href="http://mathworld.wolfram.com/NormalEquation.html">Normal Equation.</a> Onward to <a href="http://jpneill.github.io/posts/Lin_Reg_b.html">part b</a>!</p>
         
       </section>
