@@ -72,14 +72,14 @@ q)rate:9.34 8.5 7.62 6.93 6.60</code></pre>
         A value at 0 or close to 0 indicates there is little to no linear correlation between the variables. 
         It is calculated as: $$\rho_{XY}=\frac{cov(X,Y)}{\sigma_X\sigma_Y}$$<i>cov(X,Y)</i> is the covariance between 
         two population samples with size N: $$X=\{x_1,x_2,\dots,x_n\};Y=\{y_1,y_2,\dots,y_n\}$$
-        $$cov(X,Y)=\sum_{i=1}^N\frac{(x_i-\bar{x})(y_i-\bar{y})}{N}$$ In kdb we can define this as:</p>
+        $$cov(X,Y)=\sum_{i=1}^N\frac{(x_i-\bar{x})(y_i-\bar{y})}{N}$$ In q the covariance and the Pearson coefficient calculations are provided already. Covariance:</p>
 
-<pre><code>q)covar:{sum((x-avg x)*y-avg y)%count x}</code></pre>
+<pre><code>q)cov[rate;year]
+-1.41</code></pre>
 
-        <p>Using this we can write a function for the Pearson Coefficient:</p>
+        <p>The Pearson coefficient:</p>
         
-<pre><code>q)pCoeff:{covar[x;y]%(sqrt var x)*sqrt var y}
-q)pCoeff[year;rate]
+<pre><code>q)cor[rate;year]
 -0.9880813</code></pre>
 
         <p>This value for the coefficient tells us that a linear equation descibes the data very well and is a good candidate for applying a simple linear regression model.</p>
