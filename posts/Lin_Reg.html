@@ -57,7 +57,16 @@
         The sample data for linear regression is typically of the form:$$S=\{(\mathbf{x}_1,y_1),(\mathbf{x}_2,y_2),\dots,(\mathbf{x}_n,y_n)\}$$ where <b>x</b><sub>i</sub>is a vector of inputs that describe the output <i>y</i><sub>i</sub>:$$\mathbf{x}_i=\begin{pmatrix}x_{i0}\\x_{i1}\\\vdots\\x_{ii}\end{pmatrix}$$</p>
         <p>The relationship between the independent variable x and dependent variable y for simple linear regression can be described with the following equation:$$h(\mathbf{x}_i)=y_i=\beta_0 x_{i0}+\beta_1 x_{i1}$$</p>
         <p>For simple linear regression <i>x</i><sub>i0</sub> is always 1. This allows us to write the equation describing the relationship between x and y as:$$h(\mathbf{x}_i)=\beta\cdot\mathbf{x}_i=\beta_0+\beta_1x_{i1}$$</p>
-        <p></p>
+        <p>Once we have our function we need to find the optimal values of the parameters in the <b>β</b> vector which will give a function 
+        that produces the least error when applied to our sample data. This is done by using the least squares method. 
+        If we plot the current function approximation on the sample data (figure 1(a)) we can measure the residuals (the 
+        difference between the sample output and the output estimated by our function for the same input) and then square 
+        them (figure 1(b)). The motivation behind this is that the function which produces the smallest total area of these 
+        squares is the function with the best fit.</p>
+        <figure>
+          <img src="" alt="Least squares visualisation">
+          <figcaption>Figure 1 - (a) The model equation plotted on the data set. (b) The squares of the residuals.</figcaption>
+        </figure>
       </section>
     </div>
     </div>
