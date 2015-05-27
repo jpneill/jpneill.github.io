@@ -47,7 +47,7 @@
     <div class="wrapper">
       <section>
         <div id="title">
-          <h1>Simple Linear Regression</h1>
+          <h1>Simple Linear Regression - Part a</h1>
           <hr>
           <span class="credits left">James Neill</span>
           <span class="credits right">23/05/2015</span>
@@ -74,12 +74,12 @@
         Where <i>n</i> is the total number of samples in the training set.
         We generalize this to multiple dimensions by writing the above equation in terms of matrices and vectors:
         $$J(\beta)=(\mathbf{y}-\mathbf{X}\beta)^T(\mathbf{y}-\mathbf{X\beta})$$Here <b>y</b> is a vector of 
-        all the target outputs and X is called the design matrix - a matrix whose rows are made of each input 
+        all the target outputs and <b>X</b> is called the design matrix - a matrix whose rows are made of each input 
         vector <b>x</b> <sub>i</sub> :$$\mathbf{y}=\begin{pmatrix}y_1\\y_2\\\vdots\\y_n\end{pmatrix};\mathbf{X}=\begin{pmatrix}\mathbf{x}_1^T\\\mathbf{x}_2^T\\\vdots\\\mathbf{x}_n^T\end{pmatrix}$$
         Now all that is required is to minimize this function in terms of the parameter vector β. 
         To find the minimum we differentiate with respect to β, set the result equal to 0 and solve for β:
         $$\mathbf{\beta}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^{-1}\mathbf{y}$$
-        This equations is sometimes referred to as the <a href="http://mathworld.wolfram.com/NormalEquation.html">Normal Equation</a></p>
+        This equation is sometimes referred to as the <a href="http://mathworld.wolfram.com/NormalEquation.html">Normal Equation.</a> Onward to <a href="http://jpneill.github.io/posts/Lin_Reg_b.html">part b</a>!</p>
         
       </section>
     </div>
