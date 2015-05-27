@@ -47,7 +47,7 @@
     <div class="wrapper">
       <section>
         <div id="title">
-          <h1>Simple Linear Regression</h1>
+          <h1>Simple Linear Regression - Part b</h1>
           <hr>
           <span class="credits left">James Neill</span>
           <span class="credits right">23/05/2015</span>
@@ -71,7 +71,7 @@ q)rate:9.34 8.5 7.62 6.93 6.60</code></pre>
         When it has a value of -1 then the linear equation describes a decreasing trend instead. 
         A value at 0 or close to 0 indicates there is little to no linear correlation between the variables. 
         It is calculated as: $$\rho_{XY}=\frac{cov(X,Y)}{\sigma_X\sigma_Y}$$<i>cov(X,Y)</i> is the covariance between 
-        two population samples with size N: $$X={x_1,x_2,\dots,x_n};Y={y_1,y_2,\dots,y_n}$$
+        two population samples with size N: $$X=\{x_1,x_2,\dots,x_n\};Y=\{y_1,y_2,\dots,y_n\}$$
         $$cov(X,Y)=\sum_{i=1}^N\frac{(x_i-\bar{x})(y_i-\bar{y})}{N}$$ In kdb we can define this as:</p>
 
 <pre><code>q)covar:{sum((x-avg x)*y-avg y)%count x}</code></pre>
@@ -86,7 +86,7 @@ q)pCoeff[year;rate]
         
         <h3>Calculating β</h3>
         <p>Finally we get to use all the theory we discussed in part a. We defined β as:
-        $$\mathbf{\beta}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^{-1}\mathbf{y}$$
+        $$\mathbf{\beta}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}$$
         This is quite easy to write in kdb+ due to lists being the building blocks of all things q:</p>
         
 <pre><code>q)neq:{(qinv[flip[x]$x]$flip[x])$y}</code></pre>
@@ -109,6 +109,30 @@ q)beta
 1419.208 -0.705</code></pre>
 
         <h3>Residuals and the Residual Standard Error</h3>
+        <p>To determine the residual standard error we need to first find the sum of squared residuals using the following definition:
+        $$SSR=(\mathbf{y}-\mathbf{X}\beta)^T(\mathbf{y}-\mathbf{X\beta})$$ In q it has the form (sse is used here for sum of squared errors because ssr is a reserved function in q):</p>
+        
+<pre><code>q)sse:{[x;y;beta]s$s:y-x$beta}
+q)sse[X;rate;beta]
+0.12063</code></pre>
+
+        <p>Now we can calculate the residual standard error:$$\hat{\sigma}=\sqrt{\frac{SSR}{d.o.f.}}$$ 
+        where d.o.f. is the degrees of freedom defined as the difference between the number of samples in our data 
+        set and the number of parameters we are estimating.</p>
+        
+<pre><code>q)rse:{[x;y;beta]sqrt sse[x;y;beta]%count[y]-count beta}
+q)rse[X;rate;beta]
+0.2005243</code></pre>
+
+        <h3>Standard Error of the Coefficients</h3>
+        <p>The standard error of the coefficients <b>β</b> are the diagonal entries of the matrix:
+        $$\hat{s.e}\beta=\sqrt{\hat{\sigma}^2(\mathbf{X}^T\mathbf{X})^{-1}}$$
+        This is easily calculated in q:</p>
+        
+<pre><code>q)sec:{[x;y;beta]a:sqrt sse[x;y;beta]*qinv[flip[x]$x];raze {x where y}'[a;{x=/:x}til count a]}
+q)sec[X;rate;beta]
+219.8831 0.1098317</code></pre>
+
       </section>
     </div>
     </div>
