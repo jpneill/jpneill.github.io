@@ -130,9 +130,7 @@ rse| 0.2005243</code></pre>
         $$\hat{s.e}\beta=\sqrt{\hat{\sigma}^2(\mathbf{X}^T\mathbf{X})^{-1}}$$
         This is easily calculated in q:</p>
         
-<pre><code>q)sec:{[x;y;beta]a:sqrt sse[x;y;beta]*qinv[flip[x]$x];raze {x where y}'[a;{x=/:x}til count a]}
-q)sec[X;rate;beta]
-219.8831 0.1098317</code></pre>
+<pre><code>q)sec:{[x;y;beta]a:sqrt (b*b:ssr[x;y;beta])*qinv[flip[x]$x];raze {x where y}'[a;{x=/:x}til count a]}</code></pre>
 
       </section>
     </div>
