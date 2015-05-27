@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Simple Linear Regression</title>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="../javascripts/respond.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        styles: {
+          ".MathJax": {
+            color: "#F0E7D5"
+          }
+        }
+      });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="../stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+    <div class="leftnav">
+      <ul>
+        <li><a href="http://jpneill.github.io/posts/Lin_Alg_q.html">Post 1</a></li>
+        <li><a href="http://jpneill.github.io/posts/Lin_Reg.html">Post 2.a</a></li>
+        <li><a href="#">Post 2.b</a></li>
+      <ul>
+    </div>
+    <div id="header">
+        <nav class="postheader">
+          <li class="fork"><a href="http://jpneill.github.io/index.html">Home</a></li>
+          <li class="fork"><a href="https://github.com/jpneill">GitHub</a></li>
+          <!--<li class="fork"><a href="http://jpneill.github.io/pages/worldgen.html">World Generator!</a></li>-->
+          <li class="fork"><a href="http://jpneill.github.io/kdb_blog.html">kdb+</a></li>
+        </nav>
+    </div><!-- end header -->
+    <div class="rightpost">
+    <div class="wrapper">
+      <section>
+        <div id="title">
+          <h1>Simple Linear Regression</h1>
+          <hr>
+          <span class="credits left">James Neill</span>
+          <span class="credits right">23/05/2015</span>
+        </div>
+        <h3>Example</h3>
+        <p>Now we have the boring stuff out the way we can do some kdb+. 
+        For this example we'll work through the same linear regression example in R given on this website: <a href="http://www.cyclismo.org/tutorial/R/linearLeastSquares.html">Linear Least Squares Regression</a>.
+        We'll also be using a C extension to calculate the inverse. 
+        This function will use lapack's dgetrf and dgetri functions, the source can be found here: 
+        <a href="https://github.com/jpneill/qinv">qinv</a></p>
+        <p></p>
+        <p>Now let's load in the data and get started:</p>
+
+<pre><code>q)year:`float$2000+til 5
+q)rate:9.34 8.5 7.62 6.93 6.60</code></pre>
+
+        <h3>Pearson's Coefficient</h3>
+        <p>Before we start calculating our parameters we'll examine the correlation between the year and the rate variables.
+        Pearson's coefficient is a measure of correlation between 2 variables that has a value between -1 and 1. 
+        When it has a value of 1 a linear equation describes the trend of the data where an increase in X is mirrored by an increase in Y.
+        When it has a value of -1 then the linear equation describes a decreasing trend instead. 
+        A value at 0 or close to 0 indicates there is little to no linear correlation between the variables. It is calculated </p>
+      </section>
+    </div>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  </body>
+</html>
