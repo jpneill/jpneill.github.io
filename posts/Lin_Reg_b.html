@@ -110,14 +110,14 @@ q)beta
 
         <h3>Residuals and the Residual Standard Error</h3>
         <p>To determine the residual standard error we need to first find the sum of squared residuals using the following definition:
-        $$SSR=(\mathbf{y}-\mathbf{X}\beta)^T(\mathbf{y}-\mathbf{X\beta})$$ In q it has the form (sse is used here for sum of squared errors because ssr is a reserved function in q):</p>
+        $$SSE=(\mathbf{y}-\mathbf{X}\beta)^T(\mathbf{y}-\mathbf{X\beta})$$ In q it has the form:</p>
         
 <pre><code>q)sse:{[x;y;beta]y$y-:x$beta}
 q)sse[X;rate;beta]
 0.12063</code></pre>
 
-        <p>Now we can calculate the residual standard error:$$\hat{\sigma}=\sqrt{\frac{SSR}{d.o.f.}}$$ 
-        where d.o.f. is the degrees of freedom defined as the difference between the number of samples in our data 
+        <p>Now we can calculate the residual standard error:$$\hat{\sigma}=\sqrt{\frac{SSE}{d.o.f.}}$$ 
+        where d.o.f. is the degrees of freedom - the difference between the number of samples in our data 
         set and the number of parameters we are estimating.</p>
         
 <pre><code>q)rse:{[x;y;beta]`dof`rse!(dof;sqrt sse[x;y;beta]%dof:count[y]-count beta)}
@@ -134,6 +134,30 @@ rse| 0.2005243</code></pre>
 q)sec[X;rate;beta]
 126.9496 0.06341136</code></pre>
 
+        <h3>Coefficient of Determination - R-squared</h3>
+        <p>The coefficient of determination (commonly referred to as R-squared) explains the amount of variation in the dependent variable explained by the independent variables.
+        Its value is always between 0 and 1, with values close to 1 indicating that the regression line of the determined model predicts future values well.
+        We can calculate the R-squared value using the Pearson coefficient between the observed data and the predicted data:
+        $$R^2=\rho^2_{y\hat{y}}$$</p>
+        
+<pre><code>q)r2:{[x;y;beta]a*a:y cor x$beta}
+q)r2[X;rate;beta]
+0.9763047</code></pre>
+
+        <p>R-squared increases with the number of parameters in the model. 
+        This can lead to artificial inflation of the R-squared value if we just keep adding more parameters. 
+        To deal with this it is also useful to calculate the adjusted R-squared value:
+        $$R^2_{adj}=1-\frac{(n-1)SSE}{(d.o.f.)SST}$$ where SST is the total sum of squares:$$SST=\sum^n_{i=1}(y_i-\bar{y})^2$$</p>
+        
+<pre><code>// R-squared
+q)r2:{[x;y;beta]a*a:y cor x$beta}
+q)r2[X;rate;beta]
+0.9763047
+// Adjusted R-squared
+q)ar2:{[x;y;beta]1-(count[y]-1)*sse[x;y;beta]%(count[y]-count beta)*sst[y]}
+q)ar2[X;rate;beta]
+0.9684062
+</code></pre>
       </section>
     </div>
     </div>
