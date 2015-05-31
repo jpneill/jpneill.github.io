@@ -112,7 +112,7 @@ q)beta
         <p>To determine the residual standard error we need to first find the sum of squared residuals using the following definition:
         $$SSR=(\mathbf{y}-\mathbf{X}\beta)^T(\mathbf{y}-\mathbf{X\beta})$$ In q it has the form (sse is used here for sum of squared errors because ssr is a reserved function in q):</p>
         
-<pre><code>q)sse:{[x;y;beta]s$s:y-x$beta}
+<pre><code>q)sse:{[x;y;beta]y$y-:x$beta}
 q)sse[X;rate;beta]
 0.12063</code></pre>
 
@@ -130,7 +130,9 @@ rse| 0.2005243</code></pre>
         $$\hat{s.e}\beta=\sqrt{\hat{\sigma}^2(\mathbf{X}^T\mathbf{X})^{-1}}$$
         This is easily calculated in q:</p>
         
-<pre><code>q)sec:{[x;y;beta]a:sqrt (sse[x;y;beta]%count[y]-count beta)*qinv[flip[x]$x];raze {x where y}'[a;{x=/:x}til count a]}</code></pre>
+<pre><code>q)sec:{[x;y;beta]raze {x where y}'[a;{x=/:x}til count a:sqrt (sse[x;y;beta]%count[y]-count beta)*qinv[flip[x]$x]]}
+q)sec[X;rate;beta]
+126.9496 0.06341136</code></pre>
 
       </section>
     </div>
