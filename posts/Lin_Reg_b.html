@@ -149,7 +149,8 @@ q)r2[X;rate;beta]
         To deal with this it is also useful to calculate the adjusted R-squared value:
         $$R^2_{adj}=1-\frac{(n-1)SSE}{(d.o.f.)SST}$$ where SST is the total sum of squares:$$SST=\sum^n_{i=1}(y_i-\bar{y})^2$$</p>
         
-<pre><code>q)ar2:{[x;y;beta]1-(count[y]-1)*sse[x;y;beta]%(count[y]-count beta)*sst[y]}
+<pre><code>q)sst:{x$x-:avg x}
+q)ar2:{[x;y;beta]1-(count[y]-1)*sse[x;y;beta]%(count[y]-count beta)*sst[y]}
 q)ar2[X;rate;beta]
 0.9684062
 </code></pre>
