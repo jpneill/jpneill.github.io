@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+<channel>
+  <title>Hamster kdb+ Feed</title>
+  <link>http://jpneill.github.io/kdb_blog.html</link>
+  <description>q/kdb+ topics</description>
+  <item>
+    <title>Post 1 - Basic linear algebra in q</title>
+    <link>http://jpneill.github.io/posts/Lin_Alg_q.html</link>
+    <description>Basic linear algebra in q - matrices and vectors - add, subtract, dot product, etc.</description>
+  </item>
+</channel>
+
+</rss>
