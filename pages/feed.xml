@@ -12,6 +12,20 @@
     <guid isPermaLink="true">http://jpneill.github.io/posts/Lin_Alg_q.html</guid>
     <description>Basic linear algebra in q - matrices and vectors - add, subtract, dot product, etc.</description>
   </item>
+  <item>
+    <title>Post 2.a - Simple Linear Regression - Part a</title>
+    <link>http://jpneill.github.io/posts/Lin_Reg.html</link>
+    <pubDate>Sat, 23 May 2015 18:00:00 -0500</pubDate>
+    <guid isPermaLink="true">http://jpneill.github.io/posts/Lin_Reg.html</guid>
+    <description>Background theory and formulation for simple linear regression.</description>
+  </item>
+  <item>
+    <title>Post 2.b - Simple Linear Regression - Part b</title>
+    <link>http://jpneill.github.io/posts/Lin_Reg_b.html</link>
+    <pubDate>Sat, 23 May 2015 18:00:00 -0500</pubDate>
+    <guid isPermaLink="true">http://jpneill.github.io/posts/Lin_Reg_b.html</guid>
+    <description>An example of simple linear regression implemented using q.</description>
+  </item>
 </channel>
 
 </rss>
