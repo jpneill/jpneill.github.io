@@ -881,3 +881,10 @@ section #title .credits.right {
     display: none;
   }
 }
+
+figure.cdiag p {
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+}
