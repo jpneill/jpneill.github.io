@@ -26,6 +26,13 @@
     <guid isPermaLink="true">http://jpneill.github.io/posts/Lin_Reg_b.html</guid>
     <description>An example of simple linear regression implemented using q.</description>
   </item>
+  <item>
+    <title>Post 3 - Elementary Cellular Automata</title>
+    <link>http://jpneill.github.io/posts/CA.html</link>
+    <pubDate>Sun, 28 September 2015 00:00:00 -0500</pubDate>
+    <guid isPermaLink="true">http://jpneill.github.io/posts/CA.html</guid>
+    <description>Implementing elementary cellular automata in q.</description>
+  </item>
 </channel>
 
 </rss>
